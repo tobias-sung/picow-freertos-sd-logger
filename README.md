@@ -1,3 +1,5 @@
+This README file was generated using Claude, with a few adjustments.
+
 # SD Card Debug Logger for the Raspberry Pi Pico 
 
 This project demonstrates debug message logging on a Raspberry Pi Pico W using a custom PIO-based UART TX and FreeRTOS-FAT for SD card file operations.
