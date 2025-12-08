@@ -2,7 +2,7 @@ This README file was generated using Claude, with a few adjustments.
 
 # SD Card Debug Logger for the Raspberry Pi Pico 
 
-This project demonstrates debug message logging on a Raspberry Pi Pico W using a custom PIO-based UART TX and FreeRTOS-FAT for SD card file operations.
+This project demonstrates debug message logging on a Raspberry Pi Pico W. Messages are outputted via a software UART interface (using PIO, which frees up the hardware UART for other purposes) and saves debug messages to a text file on an SD card via SPI SD card reader. 
 
 ## Features
 
@@ -71,7 +71,7 @@ cp build/blink.uf2 /media/YOUR_USERNAME/RPI-RP2/
 
 - Debug messages are printed via the custom PIO UART TX.
 - All messages are simultaneously logged to a text file on the SD card.
-- Monitor the debug output via a serial terminal (if connected to the PIO UART TX pin).
+- Monitor the debug output via a serial terminal (connected to the PIO UART TX pin).
 
 ## Project Structure
 
