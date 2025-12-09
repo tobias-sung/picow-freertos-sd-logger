@@ -1,12 +1,12 @@
 This README file was generated using Claude, with a few adjustments.
 
-# SD Card Debug Logger for the Raspberry Pi Pico 
+# Timestamped Debug Logger with SD Card Storage for the Raspberry Pi Pico (FreeRTOS) 
 
 This project demonstrates debug message logging on a Raspberry Pi Pico W. Messages are outputted via a software UART interface (using PIO, which frees up the hardware UART for other purposes) and saves debug messages to a text file on an SD card via SPI SD card reader. 
 
 ## Features
 
-- **Custom PIO UART**: Debug messages are transmitted via a PIO (Programmable I/O) UART TX interface instead of the standard hardware UART.
+- **Custom PIO UART**: Debug messages are transmitted via a PIO (Programmable I/O) UART TX interface instead of the standard hardware UART. 
 - **SD Card Logging**: All debug messages are automatically saved to a text file on an SD card.
 - **FreeRTOS Integration**: Built on FreeRTOS for multitasking and real-time capabilities.
 - **SD Card Support**: Uses the [FreeRTOS-FAT-CLI-for-RPi-Pico](https://github.com/carlk3/FreeRTOS-FAT-CLI-for-RPi-Pico) library for SD card interfacing.
