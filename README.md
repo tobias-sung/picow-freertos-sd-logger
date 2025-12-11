@@ -1,6 +1,6 @@
 # Timestamped Debug Logger with SD Card Storage for the Raspberry Pi Pico (FreeRTOS) 
 
-This project demonstrates a simple debug logger that is saved to an SD card (for the Raspberry Pi Pico). 
+This project demonstrates a simple debug logger that is saved to an SD card (for the Raspberry Pi Pico), using [FreeRTOS-FAT-CLI-for-RPi-Pico](https://github.com/carlk3/FreeRTOS-FAT-CLI-for-RPi-Pico/blob/master/README.md). 
 
 ## Usage
 ![](https://tobias-sung.github.io/my-notes/Images/SD-Card-Debug-Logger.png)
