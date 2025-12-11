@@ -1,15 +1,21 @@
-This README file was generated using Claude, with a few adjustments.
-
 # Timestamped Debug Logger with SD Card Storage for the Raspberry Pi Pico (FreeRTOS) 
 
-This project demonstrates debug message logging on a Raspberry Pi Pico W. Messages are outputted via a software UART interface (using PIO, which frees up the hardware UART for other purposes) and saves debug messages to a text file on an SD card via SPI SD card reader. 
+This project demonstrates a simple debug logger that is saved to an SD card (for the Raspberry Pi Pico). 
+
+## Usage
+![](https://tobias-sung.github.io/my-notes/Images/SD-Card-Debug-Logger.png)
+(Read in-progress write-up [here](https://tobias-sung.github.io/my-notes/Project-Portos/10---SD-Card-Debug-Logger))
+- Print debug messages using `debug_print()` (format is the same as printf). Messages are saved to a queue, waiting to be written to the logfile.
+- Timestamps will only be added if the real-time clock has been initialized (this is tracked using a simple boolean variable `rtc_initialized`
+- The SD card reader has its own task for initialization/writing. It does not initialize until after the FreeRTOS task scheduler has started. Upon initialization, it will write create a logfile with the name "`db_log_HH.MM_DDMMYY.txt`" (with a timestamp attached), then write all debug messages in the queue so far. After that, it starts a forever loop waiting for notifications from `debug_print()`.
 
 ## Features
 
-- **Custom PIO UART**: Debug messages are transmitted via a PIO (Programmable I/O) UART TX interface instead of the standard hardware UART. 
+- **Custom PIO UART**: Debug messages are transmitted via a PIO (Programmable I/O) UART TX interface instead of the standard hardware UART, which frees up the UART connectors for other devices. 
 - **SD Card Logging**: All debug messages are automatically saved to a text file on an SD card.
 - **FreeRTOS Integration**: Built on FreeRTOS for multitasking and real-time capabilities.
 - **SD Card Support**: Uses the [FreeRTOS-FAT-CLI-for-RPi-Pico](https://github.com/carlk3/FreeRTOS-FAT-CLI-for-RPi-Pico) library for SD card interfacing.
+
 
 ## Hardware Requirements
 
@@ -67,11 +73,6 @@ cp build/blink.uf2 /media/YOUR_USERNAME/RPI-RP2/
 
 4. The Pico will automatically reboot and start running the program.
 
-## Usage
-
-- Debug messages are printed via the custom PIO UART TX.
-- All messages are simultaneously logged to a text file on the SD card.
-- Monitor the debug output via a serial terminal (connected to the PIO UART TX pin).
 
 ## Project Structure
 
